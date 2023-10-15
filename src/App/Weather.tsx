@@ -1,47 +1,96 @@
-import React from "react"
+import React, { useState, useEffect } from "react";
 
-const Weather = ( props: any ) => {
-    const [ info, setInfo ] = React.useState( {
-        city: null,
-        temp: null,
-        icon: null, } )
+interface WeatherProps {
+  city: string;
+}
 
-    console.log( "info" + JSON.stringify( info ) )
+interface WeatherInfo {
+  city: string;
+  temp: number | null;
+  description: string | null;
+  icon: string | null;
+  humidity: number | null;
+  windSpeed: number | null;
+  sunrise: number | null;
+  sunset: number | null;
+  localNames: { [key: string]: string } | null;
+}
 
-    const isPending = React.useRef( false )
+const API_KEY = "4c4f0b1876954338598a7be96c66527b";
 
-    React.useLayoutEffect( () => {
-        if ( props.city !== null || isPending.current === false ) {
+export const Weather: React.FC<WeatherProps> = ({ city }) => {
+  const [info, setInfo] = useState<WeatherInfo>({
+    city: "",
+    temp: null,
+    description: null,
+    icon: null,
+    humidity: null,
+    windSpeed: null,
+    sunrise: null,
+    sunset: null,
+    localNames: null,
+  });
+  const [showLocalNames, setShowLocalNames] = useState<boolean>(false);
 
-        isPending.current = true
+  const toggleLocalNames = () => {
+    setShowLocalNames(!showLocalNames);
+  };
 
-        fetch( `https://api.openweathermap.org/geo/1.0/direct?q=${ props.city }&appid=4c4f0b1876954338598a7be96c66527b` )
-            .then( res => res.json() )
-            .then( data => {
-                console.log( data )
+  useEffect(() => {
+    if (city) {
+      fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API_KEY}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data && data[0]) {
+            fetch(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${data[0].lat}&lon=${data[0].lon}&units=metric&appid=${API_KEY}`
+            )
+              .then((res) => res.json())
+              .then((data) => {
+                setInfo({
+                  city: data.name,
+                  temp: data.main.temp,
+                  description: data.weather[0].description,
+                  icon: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+                  humidity: data.main.humidity,
+                  windSpeed: data.wind.speed,
+                  sunrise: data.sys.sunrise,
+                  sunset: data.sys.sunset,
+                  localNames: data[0]?.local_names || null,
+                });
+              });
+          }
+        });
+    }
+  }, [city]);
 
-                fetch( `https://api.openweathermap.org/data/2.5/weather?lat=${ data[ 0 ].lat }&lon=${ data[ 0 ].lon }&units=metric&appid=4c4f0b1876954338598a7be96c66527b` )
-                    .then( res => res.json() )
-                    .then( data => {
-                        console.log( data )
-                        
-                        setInfo( {
-                            city: data.name,
-                            temp: data.main.temp,
-                            icon: `https://openweathermap.org/img/wn/${ data.weather[ 0 ].icon }@2x.png` as any, } ) 
-                        
-                        isPending.current = false } ) } ) } }, [ props.city ] )
-
-    return  <>
-                <h1>
-                    { info.city }
-                </h1>
-
-                <p>
-                    { info.temp && ~~ info.temp } Celcius
-                </p>
-
-                <img src={ info.icon as unknown as string } alt="Icon" />
-            </> }
-
-export { Weather }
+  return (
+    <div>
+      <h1>{info.city}</h1>
+      <p>{info.temp && Math.round(info.temp)} °C</p>
+      <p>{info.description}</p>
+      <p>Humidity: {info.humidity} %</p>
+      <p>Wind Speed: {info.windSpeed} m/s</p>
+      {info.sunrise && (
+        <p>Sunrise: {new Date(info.sunrise * 1000).toLocaleTimeString()}</p>
+      )}
+      {info.sunset && (
+        <p>Sunset: {new Date(info.sunset * 1000).toLocaleTimeString()}</p>
+      )}
+      {info.icon && <img src={info.icon} alt="Weather icon" />}
+      {info.localNames && (
+        <div>
+          <button onClick={toggleLocalNames}>Toggle Local Names</button>
+          {showLocalNames &&
+            Object.entries(info.localNames).map(([key, name]) => (
+              <p key={key}>
+                {key}: {name}
+              </p>
+            ))}
+        </div>
+      )}
+    </div>
+  );
+};

@@ -1,33 +1,52 @@
-import React from "react"
+import React, { FC, useState, useCallback, useEffect } from "react";
+import { Weather } from "./Weather";
+import "./app.css";
 
-import { Weather } from "./Weather"
+interface Props {}
 
-import type { FC } from "react"
+export const App: FC<Props> = () => {
+  const [input, setInput] = useState<string>("");
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme === "dark-mode" : true;
+  });
 
-import "./app.css"
+  useEffect(() => {
+    const themeClass = isDarkMode ? "dark-mode" : "light-mode";
+    document.body.classList.remove("dark-mode", "light-mode");
+    document.body.classList.add(themeClass);
+    localStorage.setItem("theme", themeClass);
+  }, [isDarkMode]);
 
-export const App: FC = () => {
-    const [ input, setInput ] = 
-        React.useState( null as unknown as string )
+  const handleInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInput(event.target.value);
+    },
+    []
+  );
 
-    const [ city, setCity ] =
-        React.useState( null as unknown as string )
+  return (
+    <div>
+      <input
+        role="search"
+        type="text"
+        value={input}
+        onChange={handleInputChange}
+        placeholder="Enter a city"
+      />
+      <button onClick={() => {}}>Show Weather</button>
+      <Weather city={input} />
 
-    const doStuff = ( event: any ) => 
-        setInput( event.target.value )
-
-    console.log( input )
-    
-    return  <>
-                <input 
-                    role="search"
-                    type="text" 
-                    value={ input as unknown as string } 
-                    onChange={ doStuff }  />
-
-                <button onClick={ () => setCity( input ) } >
-                    Show Weather
-                </button>
-
-                < Weather city={ city } />
-            </> }
+      {/* Theme switcher */}
+      <label className="switch">
+        <input
+          className="switch__input"
+          type="checkbox"
+          role="switch"
+          checked={isDarkMode}
+          onChange={() => setIsDarkMode((prev) => !prev)}
+        />
+      </label>
+    </div>
+  );
+};
