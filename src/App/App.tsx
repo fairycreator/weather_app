@@ -27,7 +27,6 @@ export const App: FC<Props> = () => {
 
   return (
     <div>
-      {/* Theme switcher */}
       <div className="switch-wrapper">
         <span>Light</span>
         <label className="switch">

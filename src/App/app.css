@@ -1,11 +1,11 @@
 :root {
   font-size: 10px;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial",
-    sans-serif; /* Use San Francisco font on Apple devices */
-  --dark: #2c2c2e; /* Slightly less black for a softer dark mode */
-  --light: #fafafa; /* Slightly off-white for softer light mode */
-  --teal: #00a8e5; /* Apple's blue-ish highlight color */
-  --ruby: #c51f5d; /* Adjusted for a more muted ruby */
+    sans-serif;
+  --dark: #2c2c2e;
+  --light: #fafafa;
+  --teal: #00a8e5;
+  --ruby: #c51f5d;
 }
 
 html,
@@ -14,11 +14,11 @@ body,
   margin: 0;
   padding: 0;
   border: none;
-  font-weight: 400; /* Regular weight similar to Apple's typography */
+  font-weight: 500;
   text-transform: none;
   text-decoration: none;
   box-sizing: border-box;
-  transition: background-color 0.5s, color 0.5s; /* Smooth transitions */
+  transition: background-color 0.5s, color 0.5s;
 }
 
 body.dark-mode {
@@ -43,8 +43,8 @@ div {
   border: 2px solid var(--ruby);
   border-radius: 1rem;
   padding: 2rem;
-  max-width: 600px; /* Limiting width for better appearance on large screens */
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  max-width: 600px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 input,
@@ -53,8 +53,8 @@ button {
   border-radius: 1rem;
   border: 1px solid var(--dark);
   margin: 0.5rem 0;
-  font-size: 1.6rem;
-  transition: all 0.3s; /* Smooth transition for hover states */
+  font-size: 2rem;
+  transition: all 0.3s;
 }
 
 input {
@@ -79,7 +79,7 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 
 /* Toggle Switch Styles */
