@@ -27,6 +27,20 @@ export const App: FC<Props> = () => {
 
   return (
     <div>
+      {/* Theme switcher */}
+      <div className="switch-wrapper">
+        <span>Light</span>
+        <label className="switch">
+          <input
+            type="checkbox"
+            checked={isDarkMode}
+            onChange={() => setIsDarkMode((prev) => !prev)}
+          />
+          <span className="switch-slider"></span>
+        </label>
+        <span>Dark</span>
+      </div>
+
       <input
         role="search"
         type="text"
@@ -36,17 +50,6 @@ export const App: FC<Props> = () => {
       />
       <button onClick={() => {}}>Show Weather</button>
       <Weather city={input} />
-
-      {/* Theme switcher */}
-      <label className="switch">
-        <input
-          className="switch__input"
-          type="checkbox"
-          role="switch"
-          checked={isDarkMode}
-          onChange={() => setIsDarkMode((prev) => !prev)}
-        />
-      </label>
     </div>
   );
 };
