@@ -59,9 +59,6 @@ const HomeSection = () => {
           visible: { opacity: 1, y: 0 },
         }}
       >
-        <h2 className="text-[45px] sm:text-[80px] font-bold max-w-[600px] font-josefin">
-          Welcome to the Weather App
-        </h2>
         <p className="text-lg sm:text-xl font-normal max-w-[600px] font-josefin">
           {" "}
           'Neath the shadow of ancient mountains high,
