@@ -49,7 +49,7 @@ const HomeSection = () => {
   if (Object.keys(data).length === 0 && error === "") {
     content = (
       <motion.div
-        className="text-white/75 text-center mt-[5rem] px-8 w-full flex justify-center flex-col items-center mb-20"
+        className="text-elder text-center mt-[5rem] px-8 w-full flex justify-center flex-col items-center mb-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
@@ -59,13 +59,14 @@ const HomeSection = () => {
           visible: { opacity: 1, y: 0 },
         }}
       >
-        In stories spun by skies so vast, Each dawn's tale differs from the
-        past. From morning's tender, whispered glow, To stormy day's theatrical
-        show. ElementalForecast's embrace, Takes you on a weathered chase. Not
-        just predictions, but tales profound, An epic saga where sounds resound.
-        Step into realms where breezes sway, And elements lead the destined way.
-        For in this world, as stories blend, Weather's not just news, it's a
-        tale without end.
+        'Neath the shadow of ancient mountains high, Where the stars kiss the
+        edge of the sky. In lands where elder forests grow, And secrets in the
+        murmuring winds doth blow. There, where the mists of time entwined,
+        Tales of old, in whispered verses, you'll find. Of kingdoms lost and
+        heroes of yore, And the ever looming dark, forevermore. With every dawn,
+        a new quest begun, 'Neath the watchful gaze of the setting sun. In
+        Middle-earth, where destinies intertwine, The saga of ages, both yours
+        and mine.
       </motion.div>
     );
   } else if (error !== "") {
