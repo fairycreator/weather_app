@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 const video = "/hero.mp4";
 const videoWeb = "/hero.webm";
-const hero = "/assets/hero.png";
+const hero = "/assets/hero.jpg";
 
 export const metadata: Metadata = {
   title: "Create Next App",
