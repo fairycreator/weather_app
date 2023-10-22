@@ -60,30 +60,13 @@ const HomeSection = () => {
         }}
       >
         <p className="text-lg sm:text-xl font-normal max-w-[600px] font-josefin">
-          {" "}
-          'Neath the shadow of ancient mountains high,
+          In the WeatherVerse, we keep it fly,
           <br />
-          Where the stars kiss the edge of the sky.
+          Breakin' down the forecast, no lie.
           <br />
-          In lands where elder forests grow,
+          Sun or rain, fog or blue sky,
           <br />
-          And secrets in the murmuring winds doth blow. <br />
-          <br />
-          There, where the mists of time entwined,
-          <br />
-          Tales of old, in whispered verses, you'll find.
-          <br />
-          Of kingdoms lost and heroes of yore,
-          <br />
-          And the ever looming dark, forevermore. <br />
-          <br />
-          With every dawn, a new quest begun,
-          <br />
-          'Neath the watchful gaze of the setting sun.
-          <br />
-          In Middle-earth, where destinies intertwine,
-          <br />
-          The saga of ages, both yours and mine.
+          We got the vibe, ain't even gotta try.
         </p>
       </motion.div>
     );

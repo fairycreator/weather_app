@@ -25,9 +25,9 @@ const Form: React.FC<FormProps> = ({ handleChange, handleSubmit }) => {
         <Image
           className="object-cover"
           src={ladyBug}
-          width={60}
-          height={60}
-          alt="lady bug"
+          width={40}
+          height={40}
+          alt="planet"
         />
       </motion.div>
       <form
@@ -48,7 +48,7 @@ const Form: React.FC<FormProps> = ({ handleChange, handleSubmit }) => {
             className="object-cover"
             src={logo}
             width={60}
-            height={60}
+            height={50}
             alt="weather"
           />
         </button>
