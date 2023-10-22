@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { Form } from "./Form";
 import { useState } from "react";
@@ -63,16 +61,13 @@ const HomeSection = () => {
         </h2>
         <p className="text-lg sm:text-xl font-normal max-w-[600px] font-josefin">
           {" "}
-          <br>
-            In skies vast, stories cast, Dawn's tales vary from the last.
-            Morning whispers, storms play, ElementalForecast leads the way.
-          </br>{" "}
-          <br>
-            {" "}
-            Weathered chases, profound tales, Epic sagas, wind prevails. In
-            realms where breezes bend, Weather's more than news, it's a tale
-            that doesn't end.
-          </br>{" "}
+          In stories spun by skies so vast, Each dawn's tale differs from the
+          past. From morning's tender, whispered glow, To stormy day's
+          theatrical show. ElementalForecast's embrace, Takes you on a weathered
+          chase. Not just predictions, but tales profound, An epic saga where
+          sounds resound. Step into realms where breezes sway, And elements lead
+          the destined way. For in this world, as stories blend, Weather's not
+          just news, it's a tale without end.
         </p>
       </motion.div>
     );
