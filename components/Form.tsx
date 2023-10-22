@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Image from 'next/image'
-import { motion } from "framer-motion"
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface FormProps {
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
@@ -9,8 +9,8 @@ interface FormProps {
 }
 
 const Form: React.FC<FormProps> = ({ handleChange, handleSubmit }) => {
-  const logo = '/assets/logo2.png'
-  const ladyBug = '/assets/ladybug1.png'
+  const logo = "/assets/logo2.png";
+  const ladyBug = "/assets/ladybug.png";
 
   return (
     <>
@@ -25,37 +25,38 @@ const Form: React.FC<FormProps> = ({ handleChange, handleSubmit }) => {
         }}
       >
         <Image
-          className='object-cover'
+          className="object-cover"
           src={ladyBug}
           width={60}
           height={60}
-          alt='lady bug' />
+          alt="lady bug"
+        />
       </motion.div>
       <form
         onSubmit={handleSubmit}
-        className='flex justify-between items-center w-full m-auto px-4 bg-transparent border border-gray-300 text-white rounded-2xl max-w-[700px]'
+        className="flex justify-between items-center w-full m-auto px-4 bg-transparent border border-gray-300 text-white rounded-2xl max-w-[700px]"
       >
         <div>
           <input
             onChange={handleChange}
-            className='bg-transparent border-none text-white focus:outline-none text-lg sm:text-2xl placeholder-gray-200 outline-none'
-            type='text'
-            placeholder='Search city'
-          // onKeyDown={handleSearch}
+            className="bg-transparent border-none text-white focus:outline-none text-lg sm:text-2xl placeholder-gray-200 outline-none"
+            type="text"
+            placeholder="Search city"
+            // onKeyDown={handleSearch}
           />
         </div>
-        <button type="submit"
-        >
+        <button type="submit">
           <Image
-            className='object-cover'
+            className="object-cover"
             src={logo}
             width={60}
             height={60}
-            alt='weather' />
+            alt="weather"
+          />
         </button>
-      </form></>
+      </form>
+    </>
+  );
+};
 
-  )
-}
-
-export { Form }
+export { Form };

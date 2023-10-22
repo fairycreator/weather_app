@@ -63,12 +63,16 @@ const HomeSection = () => {
         </h2>
         <p className="text-lg sm:text-xl font-normal max-w-[600px] font-josefin">
           {" "}
-          Immerse yourself in the atmospheric tales that shape your day. From
-          the gentle whispers of a sunny morning to the dramatic crescendos of
-          stormy afternoons, ElementalForecast brings you a personalized journey
-          through the elements. Step into a world where weather isn&apos;t just
-          a forecast; it&apos;s an epic narrative waiting to unfold. Let the
-          elements guide you on your daily adventures.
+          <br>
+            In skies vast, stories cast, Dawn's tales vary from the last.
+            Morning whispers, storms play, ElementalForecast leads the way.
+          </br>{" "}
+          <br>
+            {" "}
+            Weathered chases, profound tales, Epic sagas, wind prevails. In
+            realms where breezes bend, Weather's more than news, it's a tale
+            that doesn't end.
+          </br>{" "}
         </p>
       </motion.div>
     );
