@@ -49,7 +49,7 @@ const HomeSection = () => {
   if (Object.keys(data).length === 0 && error === "") {
     content = (
       <motion.div
-        className="text-elder text-center mt-[5rem] px-8 w-full flex justify-center flex-col items-center mb-20"
+        className="text-white/75 text-center mt-[2rem] px-8 w-full flex justify-center flex-col items-center mb-20"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
@@ -59,14 +59,35 @@ const HomeSection = () => {
           visible: { opacity: 1, y: 0 },
         }}
       >
-        'Neath the shadow of ancient mountains high, Where the stars kiss the
-        edge of the sky. In lands where elder forests grow, And secrets in the
-        murmuring winds doth blow. There, where the mists of time entwined,
-        Tales of old, in whispered verses, you'll find. Of kingdoms lost and
-        heroes of yore, And the ever looming dark, forevermore. With every dawn,
-        a new quest begun, 'Neath the watchful gaze of the setting sun. In
-        Middle-earth, where destinies intertwine, The saga of ages, both yours
-        and mine.
+        <h2 className="text-[45px] sm:text-[80px] font-bold max-w-[600px] font-josefin">
+          Welcome to the Weather App
+        </h2>
+        <p className="text-lg sm:text-xl font-normal max-w-[600px] font-josefin">
+          {" "}
+          'Neath the shadow of ancient mountains high,
+          <br />
+          Where the stars kiss the edge of the sky.
+          <br />
+          In lands where elder forests grow,
+          <br />
+          And secrets in the murmuring winds doth blow. <br />
+          <br />
+          There, where the mists of time entwined,
+          <br />
+          Tales of old, in whispered verses, you'll find.
+          <br />
+          Of kingdoms lost and heroes of yore,
+          <br />
+          And the ever looming dark, forevermore. <br />
+          <br />
+          With every dawn, a new quest begun,
+          <br />
+          'Neath the watchful gaze of the setting sun.
+          <br />
+          In Middle-earth, where destinies intertwine,
+          <br />
+          The saga of ages, both yours and mine.
+        </p>
       </motion.div>
     );
   } else if (error !== "") {
