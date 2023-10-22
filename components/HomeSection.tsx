@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "./Form";
-import { useState } from "react";
 import { CurrentData } from "./Current";
 import { WeatherDetails } from "./WeatherDetails";
 import { WeekForecast } from "./WeekForecast";
@@ -10,11 +9,10 @@ import { motion } from "framer-motion";
 
 const HomeSection = () => {
   const [data, setData] = useState({});
-
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
 
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=1afb03c498bb474489c193714230102&q=${location}&days=3&aqi=yes&alerts=yes`;
+  const apiKey = "92034b76704840fe9b6193758232210";
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (
     event
@@ -22,6 +20,9 @@ const HomeSection = () => {
     event.preventDefault();
 
     try {
+      // Construct the URL with your API key
+      const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3&aqi=yes&alerts=yes`;
+
       // Fetch data from the API using the location
       const response = await fetch(url);
       const result = await response.json();
@@ -58,19 +59,13 @@ const HomeSection = () => {
           visible: { opacity: 1, y: 0 },
         }}
       >
-        <h2 className="text-[45px] sm:text-[80px] font-bold max-w-[600px] font-josefin">
-          Welcome to the Weather App
-        </h2>
-        <p className="text-lg sm:text-xl font-normal max-w-[600px] font-josefin">
-          {" "}
-          In stories spun by skies so vast, Each dawn's tale differs from the
-          past. From morning's tender, whispered glow, To stormy day's
-          theatrical show. ElementalForecast's embrace, Takes you on a weathered
-          chase. Not just predictions, but tales profound, An epic saga where
-          sounds resound. Step into realms where breezes sway, And elements lead
-          the destined way. For in this world, as stories blend, Weather's not
-          just news, it's a tale without end.
-        </p>
+        In stories spun by skies so vast, Each dawn's tale differs from the
+        past. From morning's tender, whispered glow, To stormy day's theatrical
+        show. ElementalForecast's embrace, Takes you on a weathered chase. Not
+        just predictions, but tales profound, An epic saga where sounds resound.
+        Step into realms where breezes sway, And elements lead the destined way.
+        For in this world, as stories blend, Weather's not just news, it's a
+        tale without end.
       </motion.div>
     );
   } else if (error !== "") {
